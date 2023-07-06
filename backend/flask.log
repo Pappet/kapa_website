@@ -1,0 +1,535 @@
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [06/Jul/2023 21:05:59] "[31m[1mPOST /user HTTP/1.1[0m" 400 -
+[2023-07-06 21:06:39,338] ERROR in app: Exception on /user [POST]
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 2416, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/selectable.py", line 1348, in _join_condition
+    cls._joincond_trim_constraints(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/selectable.py", line 1493, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'user' and 'team'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 39, in create_user
+    existing_user = User.query.filter_by(Username=username).first()
+                    ^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 30, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 273, in __init__
+    self._set_entities(entities)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 282, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 283, in <listcomp>
+    coercions.expect(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 406, in expect
+    insp._post_inspect
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 1256, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4198, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4239, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2403, in _post_configure_properties
+    prop.init()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/interfaces.py", line 578, in init
+    self.do_init()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1634, in do_init
+    self._setup_join_conditions()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1879, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 2303, in __init__
+    self._determine_joins()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 2460, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship User.Team - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+127.0.0.1 - - [06/Jul/2023 21:06:39] "[35m[1mPOST /user HTTP/1.1[0m" 500 -
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+[2023-07-06 21:13:02,759] ERROR in app: Exception on /user [POST]
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 2416, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/selectable.py", line 1360, in _join_condition
+    raise exc.NoForeignKeysError(
+sqlalchemy.exc.NoForeignKeysError: Can't find any foreign key relationships between 'role' and 'role'.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 39, in create_user
+    existing_user = User.query.filter_by(Username=username).first()
+                    ^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 30, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 273, in __init__
+    self._set_entities(entities)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 282, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 283, in <listcomp>
+    coercions.expect(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 406, in expect
+    insp._post_inspect
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 1256, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4198, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4239, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2403, in _post_configure_properties
+    prop.init()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/interfaces.py", line 578, in init
+    self.do_init()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1634, in do_init
+    self._setup_join_conditions()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1879, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 2303, in __init__
+    self._determine_joins()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 2437, in _determine_joins
+    raise sa_exc.NoForeignKeysError(
+sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship Role.Role - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+127.0.0.1 - - [06/Jul/2023 21:13:02] "[35m[1mPOST /user HTTP/1.1[0m" 500 -
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+[2023-07-06 21:14:27,264] ERROR in app: Exception on /user [POST]
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: FEHLER:  Spalte user.Role_ID existiert nicht
+LINE 1: ... "user_Password", "user"."Email" AS "user_Email", "user"."Ro...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 39, in create_user
+    existing_user = User.query.filter_by(Username=username).first()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2747, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2846, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2246, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2141, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 483, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) FEHLER:  Spalte user.Role_ID existiert nicht
+LINE 1: ... "user_Password", "user"."Email" AS "user_Email", "user"."Ro...
+                                                             ^
+
+[SQL: SELECT "user"."User_ID" AS "user_User_ID", "user"."Username" AS "user_Username", "user"."Password" AS "user_Password", "user"."Email" AS "user_Email", "user"."Role_ID" AS "user_Role_ID", "user"."Team_ID" AS "user_Team_ID", "user"."CreatedAt" AS "user_CreatedAt" 
+FROM "user" 
+WHERE "user"."Username" = %(Username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'Username_1': 'JohnDoe2', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+127.0.0.1 - - [06/Jul/2023 21:14:27] "[35m[1mPOST /user HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/home/peter/.local/bin/flask", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 1063, in main
+    cli.main()
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/decorators.py", line 84, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 911, in run_command
+    raise e from None
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 897, in run_command
+    app = info.load_app()
+          ^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 308, in load_app
+    app = locate_app(import_name, name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 218, in locate_app
+    __import__(module_name)
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 20, in <module>
+    db.create_all()
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 887, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 868, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5792, in create_all
+    bind._run_ddl_visitor(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3239, in _run_ddl_visitor
+    conn._run_ddl_visitor(visitorcallable, element, **kwargs)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _run_ddl_visitor
+    visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/visitors.py", line 670, in traverse_single
+    return meth(obj, **kw)
+           ^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 922, in visit_metadata
+    self.traverse_single(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/visitors.py", line 670, in traverse_single
+    return meth(obj, **kw)
+           ^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 960, in visit_table
+    )._invoke_with(self.connection)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 315, in _invoke_with
+    return bind.execute(self)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 181, in _execute_on_connection
+    return connection._execute_ddl(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1524, in _execute_ddl
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InsufficientPrivilege) FEHLER:  keine Berechtigung für Schema public
+LINE 2: CREATE TABLE "user" (
+                     ^
+
+[SQL: 
+CREATE TABLE "user" (
+	"User_ID" SERIAL NOT NULL, 
+	"Username" VARCHAR(80) NOT NULL, 
+	"Password" VARCHAR(120) NOT NULL, 
+	"Email" VARCHAR(120) NOT NULL, 
+	"Role_ID" INTEGER, 
+	"Team_ID" INTEGER, 
+	"CreatedAt" TIMESTAMP WITHOUT TIME ZONE, 
+	PRIMARY KEY ("User_ID"), 
+	UNIQUE ("Username"), 
+	UNIQUE ("Email")
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [06/Jul/2023 21:20:52] "[35m[1mPOST /user HTTP/1.1[0m" 201 -
+127.0.0.1 - - [06/Jul/2023 21:21:35] "GET /user/1 HTTP/1.1" 200 -
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+127.0.0.1 - - [06/Jul/2023 21:25:53] "[35m[1mPOST /user HTTP/1.1[0m" 201 -
+127.0.0.1 - - [06/Jul/2023 21:26:01] "GET /user/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:33:33] "[35m[1mPOST /user HTTP/1.1[0m" 201 -
+127.0.0.1 - - [06/Jul/2023 21:33:39] "GET /user/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:33:46] "PUT /user/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:33:51] "GET /user/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:34:49] "DELETE /user/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:34:55] "[33mGET /user/1 HTTP/1.1[0m" 404 -
+Usage: flask run [OPTIONS]
+Try 'flask run --help' for help.
+
+Error: While importing 'App', an ImportError was raised:
+
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 218, in locate_app
+    __import__(module_name)
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 6, in <module>
+    from backend.models.Models import db, User, Team, Role, Permisson, RolePermissions
+ModuleNotFoundError: No module named 'backend'
+
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+127.0.0.1 - - [06/Jul/2023 21:55:23] "[31m[1mPOST /user HTTP/1.1[0m" 400 -
+127.0.0.1 - - [06/Jul/2023 21:55:38] "[35m[1mPOST /user HTTP/1.1[0m" 201 -
+127.0.0.1 - - [06/Jul/2023 21:55:51] "[33mGET /user/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [06/Jul/2023 21:55:54] "GET /user/2 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:56:03] "GET /user/3 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:56:17] "[33mPUT /user/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [06/Jul/2023 21:56:23] "PUT /user/2 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:56:36] "DELETE /user/2 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 21:56:44] "[33mGET /user/2 HTTP/1.1[0m" 404 -
+[2023-07-06 21:57:54,025] ERROR in app: Exception on /team [POST]
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 149, in create_team
+    return jsonify(new_team.serialize()), 201
+                   ^^^^^^^^^^^^^^^^^^
+AttributeError: 'Team' object has no attribute 'serialize'
+127.0.0.1 - - [06/Jul/2023 21:57:54] "[35m[1mPOST /team HTTP/1.1[0m" 500 -
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+[2023-07-06 22:00:19,709] ERROR in app: Exception on /team [POST]
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: FEHLER:  Spalte team.CreatedAt existiert nicht
+LINE 1: ...e", team."TeamLeader_ID" AS "team_TeamLeader_ID", team."Crea...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 134, in create_team
+    if Team.query.filter_by(TeamName=team_name).first():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2747, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2846, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2246, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2141, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 483, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) FEHLER:  Spalte team.CreatedAt existiert nicht
+LINE 1: ...e", team."TeamLeader_ID" AS "team_TeamLeader_ID", team."Crea...
+                                                             ^
+
+[SQL: SELECT team."Team_ID" AS "team_Team_ID", team."TeamName" AS "team_TeamName", team."TeamLeader_ID" AS "team_TeamLeader_ID", team."CreatedAt" AS "team_CreatedAt" 
+FROM team 
+WHERE team."TeamName" = %(TeamName_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'TeamName_1': 'TeamA', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+127.0.0.1 - - [06/Jul/2023 22:00:19] "[35m[1mPOST /team HTTP/1.1[0m" 500 -
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+127.0.0.1 - - [06/Jul/2023 22:00:56] "[35m[1mPOST /team HTTP/1.1[0m" 201 -
+127.0.0.1 - - [06/Jul/2023 22:01:07] "GET /team/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 22:01:16] "PUT /team/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 22:01:23] "DELETE /team/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 22:01:27] "[33mGET /team/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [06/Jul/2023 22:02:14] "[35m[1mPOST /user HTTP/1.1[0m" 201 -
+127.0.0.1 - - [06/Jul/2023 22:02:19] "GET /user/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 22:02:27] "PUT /user/1 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2023 22:02:34] "DELETE /user/1 HTTP/1.1" 200 -
