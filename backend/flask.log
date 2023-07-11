@@ -533,3 +533,243 @@ WHERE team."TeamName" = %(TeamName_1)s
 127.0.0.1 - - [06/Jul/2023 22:02:19] "GET /user/1 HTTP/1.1" 200 -
 127.0.0.1 - - [06/Jul/2023 22:02:27] "PUT /user/1 HTTP/1.1" 200 -
 127.0.0.1 - - [06/Jul/2023 22:02:34] "DELETE /user/1 HTTP/1.1" 200 -
+Usage: flask run [OPTIONS]
+Try 'flask run --help' for help.
+
+Error: Could not locate a Flask application. Use the 'flask --app' option, 'FLASK_APP' environment variable, or a 'wsgi.py' or 'app.py' file in the current directory.
+Traceback (most recent call last):
+  File "/home/peter/.local/bin/flask", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 1063, in main
+    cli.main()
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/decorators.py", line 84, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 911, in run_command
+    raise e from None
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 897, in run_command
+    app = info.load_app()
+          ^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 308, in load_app
+    app = locate_app(import_name, name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 218, in locate_app
+    __import__(module_name)
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 21, in <module>
+    db.create_all()
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 887, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 868, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5792, in create_all
+    bind._run_ddl_visitor(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3238, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/lib64/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3228, in begin
+    with self.connect() as conn:
+         ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3264, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2426, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3288, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1267, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 716, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 169, in _do_get
+    with util.safe_reraise():
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 167, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 678, in __init__
+    self.__connect()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 902, in __connect
+    with util.safe_reraise():
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 637, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 615, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  Passwort-Authentifizierung für Benutzer »None« fehlgeschlagen
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/peter/.local/bin/flask", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 1063, in main
+    cli.main()
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/decorators.py", line 84, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 911, in run_command
+    raise e from None
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 897, in run_command
+    app = info.load_app()
+          ^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 308, in load_app
+    app = locate_app(import_name, name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/flask/cli.py", line 218, in locate_app
+    __import__(module_name)
+  File "/home/peter/Projekte/kapa_website/backend/App.py", line 21, in <module>
+    db.create_all()
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 887, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 868, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5792, in create_all
+    bind._run_ddl_visitor(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3238, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/lib64/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3228, in begin
+    with self.connect() as conn:
+         ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3264, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2426, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3288, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1267, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 716, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 169, in _do_get
+    with util.safe_reraise():
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 167, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 678, in __init__
+    self.__connect()
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 902, in __connect
+    with util.safe_reraise():
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 637, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 615, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peter/.local/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  Passwort-Authentifizierung für Benutzer »None« fehlgeschlagen
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ * Serving Flask app 'App.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [10/Jul/2023 14:53:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2023 14:53:26] "[33mGET /users HTTP/1.1[0m" 404 -
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Role.permissions' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Role.permissions' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column permission.Permission_ID to column role_permissions.Permission_ID, which conflicts with relationship(s): 'Permission.roles' (copies permission.Permission_ID to role_permissions.Permission_ID), 'Role.Permissions' (copies permission.Permission_ID to role_permissions.Permission_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+/home/peter/.local/lib/python3.11/site-packages/flask_sqlalchemy/model.py:30: SAWarning: relationship 'Permission.Roles' will copy column role.Role_ID to column role_permissions.Role_ID, which conflicts with relationship(s): 'Permission.roles' (copies role.Role_ID to role_permissions.Role_ID), 'Role.Permissions' (copies role.Role_ID to role_permissions.Role_ID). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="Permissions,roles"' to the 'Permission.Roles' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return cls.query_class(
+127.0.0.1 - - [10/Jul/2023 14:53:37] "[33mGET /user/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [10/Jul/2023 14:53:41] "[33mGET /user/2 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [10/Jul/2023 14:53:45] "[33mGET /user/3 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [10/Jul/2023 14:53:48] "[33mGET /user/4 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [10/Jul/2023 14:53:52] "[33mGET /user/5 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [10/Jul/2023 14:53:58] "[31m[1mGET /user HTTP/1.1[0m" 405 -
+127.0.0.1 - - [10/Jul/2023 14:54:25] "[35m[1mPOST /user HTTP/1.1[0m" 201 -
+127.0.0.1 - - [10/Jul/2023 14:54:38] "[33mGET /user/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [10/Jul/2023 14:54:42] "GET /user/2 HTTP/1.1" 200 -
+127.0.0.1 - - [11/Jul/2023 22:26:42] "[33mGET /user/3 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [11/Jul/2023 22:26:57] "[31m[1mGET /team HTTP/1.1[0m" 405 -
+127.0.0.1 - - [11/Jul/2023 22:27:15] "[33mGET /read_team/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [11/Jul/2023 22:27:25] "[33mGET /team/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [11/Jul/2023 22:27:28] "[33mGET /team/2 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [11/Jul/2023 22:27:30] "[33mGET /team/3 HTTP/1.1[0m" 404 -
